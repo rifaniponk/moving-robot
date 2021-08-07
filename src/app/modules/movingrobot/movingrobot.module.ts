@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
@@ -9,6 +10,8 @@ import { ControlPlaceComponent } from './components/control-place/control-place.
 import { ControlMoveComponent } from './components/control-move/control-move.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     MainComponent,
@@ -25,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatSelectModule,
     MatButtonModule,
+    MatCardModule,
+    FontAwesomeModule,
   ],
 })
 export class MovingrobotModule {}

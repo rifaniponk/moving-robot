@@ -1,1 +1,22 @@
-<p>log works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Logs</mat-card-title>
+    <mat-card-subtitle>movement history</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ul *ngIf="logs.length">
+      <li *ngFor="let l of logs">
+        {{ l.toString() }}
+        <fa-icon
+          [icon]="l.isSuccess ? fa.check : fa.exclamationCircle"
+          [ngClass]="{
+            blue: l.action === 'report',
+            green: l.isSuccess && l.action !== 'report',
+            red: !l.isSuccess
+          }"
+        ></fa-icon>
+      </li>
+    </ul>
+    <i *ngIf="!logs.length">no movement yet!</i>
+  </mat-card-content>
+</mat-card>

@@ -4,10 +4,10 @@
 <div class="main-movingrobot">
   <div>
     <div class="tabletop-wrapper">
-      <app-tabletop [size]="5"></app-tabletop>
+      <app-tabletop [size]="5" [locator]="locator"></app-tabletop>
     </div>
     <div class="right-wrapper">
-      <app-log></app-log>
+      <app-log [logs]="locator.logs"></app-log>
       <app-control-move></app-control-move>
     </div>
   </div>

@@ -12,4 +12,10 @@ export class Log {
     this.newPosition = np;
     this.isSuccess = isSuccess;
   }
+
+  toString() {
+    let result = this.action.toUpperCase() + ' => ';
+    result += this.newPosition?.toString();
+    return result;
+  }
 }

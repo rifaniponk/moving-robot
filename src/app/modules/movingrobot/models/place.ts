@@ -18,4 +18,24 @@ export class Place {
   clone(): Place {
     return new Place(this.x, this.y, this.f);
   }
+
+  // return (x,y: NORTH)
+  toString(): string {
+    let result = String(this.x) + ',' + String(this.y) + ': ';
+    switch (this.f) {
+      case Direction.NORTH:
+        result += 'NORTH';
+        break;
+      case Direction.EAST:
+        result += 'EAST';
+        break;
+      case Direction.SOUTH:
+        result += 'SOUTH';
+        break;
+      case Direction.WEST:
+        result += 'WEST';
+        break;
+    }
+    return '(' + result + ')';
+  }
 }

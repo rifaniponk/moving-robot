@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Log } from './../../models/log';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  faCheck,
+  faExclamationCircle,
+  faInfoCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
-  styleUrls: ['./log.component.scss']
+  styleUrls: ['./log.component.scss'],
 })
 export class LogComponent implements OnInit {
+  @Input()
+  logs: Log[] = [];
 
-  constructor() { }
+  fa = {
+    check: faCheck,
+    exclamationCircle: faExclamationCircle,
+    infoCircle: faInfoCircle,
+  };
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }

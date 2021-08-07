@@ -1,0 +1,29 @@
+ul {
+  list-style: none;
+  padding-left: 16px;
+  width: 200px;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    fa-icon {
+      margin-left: 10px;
+
+      &.blue {
+        color: rgb(24, 57, 148);
+      }
+      &.green {
+        color: rgb(6, 156, 6);
+      }
+      &.red {
+        color: rgb(192, 12, 12);
+      }
+    }
+  }
+}
+
+i {
+  padding-left: 16px;
+}
