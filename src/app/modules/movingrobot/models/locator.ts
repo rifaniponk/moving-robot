@@ -4,8 +4,7 @@ import { Place, Direction } from './place';
 export class Locator {
   currentLocation?: Place;
   logs: Log[] = [];
-
-  private size: number; // size of square tabletop
+  size: number; // size of square tabletop
 
   constructor(size: number) {
     this.size = size;

@@ -1,13 +1,16 @@
-<form autocomplete="off"></form>
-<div class="tabletop">
-  <div class="y-axis" *ngFor="let locs of locationTables; let y = index">
-    <div class="x-axis" *ngFor="let l of locs; let x = index">
-      <!-- [{{ x }},{{ y }}] -->
-      <img
-        src="assets/img/robot.png"
-        *ngIf="l"
-        class="direction-{{ locator.currentLocation?.f }}"
-      />
+<mat-card>
+  <mat-card-content>
+    <div class="tabletop">
+      <div class="y-axis" *ngFor="let locs of locationTables; let y = index">
+        <div class="x-axis" *ngFor="let l of locs; let x = index">
+          <!-- [{{ x }},{{ y }}] -->
+          <img
+            src="assets/img/robot.png"
+            *ngIf="l"
+            class="direction-{{ locator.currentLocation?.f }}"
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

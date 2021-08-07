@@ -25,6 +25,7 @@ export class TabletopComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.locator.size = this.size;
     this.eventBus.on('movingrobot:control:place').subscribe((md: MetaData) => {
       this.newPlace(md.data);
     });

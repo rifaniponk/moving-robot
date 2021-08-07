@@ -2,7 +2,7 @@
 
 # MovingRobot
 
-This project was created to fulfill coding challange from Curve
+This project was created to fulfill coding challange from Curve.
 
 ## Run the app
 
@@ -34,3 +34,17 @@ open `/coverage/moving-robot/index.html` to see the coverage details
 ## Credits
 
 - robot image: [pngfind.com](https://www.pngfind.com/mpng/hbTJbR_cosmonaut-space-suit-top-down-view-character-hd/)
+
+## Live Demo
+
+[movingrobot.netlify.app](https://movingrobot.netlify.app/)
+
+## Screenshots
+
+#### Moving Robot UI
+
+![UI](https://github.com/rifaniponk/moving-robot/blob/master/screenshots/demo.PNG?raw=true)
+
+#### Unit Tests
+
+![Unit Tests](https://github.com/rifaniponk/moving-robot/blob/master/screenshots/unit-tests.PNG?raw=true)
