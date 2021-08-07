@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgEventBus } from 'ng-event-bus';
 
 import { TabletopComponent } from './tabletop.component';
 
@@ -8,9 +9,9 @@ describe('TabletopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabletopComponent ]
-    })
-    .compileComponents();
+      declarations: [TabletopComponent],
+      providers: [NgEventBus],
+    }).compileComponents();
   });
 
   beforeEach(() => {

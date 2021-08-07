@@ -10,4 +10,10 @@
   .log-wrapper {
     padding: 0px 20px;
   }
+
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

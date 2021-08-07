@@ -28,6 +28,19 @@ export class TabletopComponent implements OnInit {
     this.eventBus.on('movingrobot:control:place').subscribe((md: MetaData) => {
       this.newPlace(md.data);
     });
+    this.eventBus.on('movingrobot:control:action').subscribe((md: MetaData) => {
+      if (md.data === 'move') {
+        this.locator.move();
+      } else if (md.data === 'left') {
+        this.locator.left();
+      } else if (md.data === 'right') {
+        this.locator.right();
+      } else if (md.data === 'report') {
+        this.locator.report();
+      }
+      this.refreshCurrentRobotPosition();
+    });
+
     this.refreshCurrentRobotPosition();
   }
 

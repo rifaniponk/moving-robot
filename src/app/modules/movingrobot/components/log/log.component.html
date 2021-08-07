@@ -5,10 +5,16 @@
   </mat-card-header>
   <mat-card-content>
     <ul *ngIf="logs.length">
-      <li *ngFor="let l of logs">
+      <li *ngFor="let l of logs.slice().reverse()">
         {{ l.toString() }}
         <fa-icon
-          [icon]="l.isSuccess ? fa.check : fa.exclamationCircle"
+          [icon]="
+            l.action === 'report'
+              ? fa.infoCircle
+              : l.isSuccess
+              ? fa.check
+              : fa.exclamationCircle
+          "
           [ngClass]="{
             blue: l.action === 'report',
             green: l.isSuccess && l.action !== 'report',

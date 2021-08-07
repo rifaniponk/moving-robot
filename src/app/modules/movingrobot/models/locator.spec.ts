@@ -65,13 +65,52 @@ describe('Locator::move Test', () => {
 
   it('should ignore the invalid location place', () => {
     // facing EAST & move 3x
-    const locator = new Locator(5);
+    let locator = new Locator(5);
     locator.place(2, 2, Direction.EAST);
-    const s1 = locator.move();
-    const s2 = locator.move();
-    const s3 = locator.move(); // invalid movement
+    let s1 = locator.move();
+    let s2 = locator.move();
+    let s3 = locator.move(); // invalid movement
 
-    const expectedCurrentLocation = new Place(4, 2, Direction.EAST);
+    let expectedCurrentLocation = new Place(4, 2, Direction.EAST);
+    expect(locator.currentLocation).toEqual(expectedCurrentLocation);
+    expect(s1).toEqual(true);
+    expect(s2).toEqual(true);
+    expect(s3).toEqual(false);
+
+    // facing WEST & move 3x
+    locator = new Locator(5);
+    locator.place(2, 2, Direction.WEST);
+    s1 = locator.move();
+    s2 = locator.move();
+    s3 = locator.move(); // invalid movement
+
+    expectedCurrentLocation = new Place(0, 2, Direction.WEST);
+    expect(locator.currentLocation).toEqual(expectedCurrentLocation);
+    expect(s1).toEqual(true);
+    expect(s2).toEqual(true);
+    expect(s3).toEqual(false);
+
+    // facing NORTH & move 3x
+    locator = new Locator(5);
+    locator.place(2, 2, Direction.NORTH);
+    s1 = locator.move();
+    s2 = locator.move();
+    s3 = locator.move(); // invalid movement
+
+    expectedCurrentLocation = new Place(2, 4, Direction.NORTH);
+    expect(locator.currentLocation).toEqual(expectedCurrentLocation);
+    expect(s1).toEqual(true);
+    expect(s2).toEqual(true);
+    expect(s3).toEqual(false);
+
+    // facing SOUTH & move 3x
+    locator = new Locator(5);
+    locator.place(2, 2, Direction.SOUTH);
+    s1 = locator.move();
+    s2 = locator.move();
+    s3 = locator.move(); // invalid movement
+
+    expectedCurrentLocation = new Place(2, 0, Direction.SOUTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
     expect(s1).toEqual(true);
     expect(s2).toEqual(true);

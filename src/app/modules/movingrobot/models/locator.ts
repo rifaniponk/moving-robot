@@ -120,7 +120,12 @@ export class Locator {
 
   // validate the new position and log the error movement if it's not valid
   validate(action: Action, place: Place): boolean {
-    if (place.x > this.size - 1 || place.y > this.size - 1) {
+    if (
+      place.x > this.size - 1 ||
+      place.y > this.size - 1 ||
+      place.x < 0 ||
+      place.y < 0
+    ) {
       this.logs.push(new Log(action, false, place));
       return false;
     }

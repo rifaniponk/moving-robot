@@ -11,6 +11,7 @@ import { ControlMoveComponent } from './components/control-move/control-move.com
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { CoresModule } from 'src/app/modules/cores/cores.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatCardModule,
     FontAwesomeModule,
+    CoresModule,
   ],
 })
 export class MovingrobotModule {}

@@ -15,7 +15,11 @@ export class Log {
 
   toString() {
     let result = this.action.toUpperCase() + ' => ';
-    result += this.newPosition?.toString();
+    if (this.newPosition) {
+      result += this.newPosition.toString();
+    } else {
+      result += 'No Location';
+    }
     return result;
   }
 }

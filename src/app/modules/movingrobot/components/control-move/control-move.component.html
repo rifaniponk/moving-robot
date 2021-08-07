@@ -1,3 +1,28 @@
 <mat-card class="control-move">
-  <mat-card-content> </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Controls</mat-card-title>
+    <mat-card-subtitle>move your robot</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-raised-button color="accent" (click)="move()">Move</button>
+    <div class="rotate-btn">
+      <button
+        mat-raised-button
+        color="link"
+        title="rotate LEFT"
+        (click)="rotate('left')"
+      >
+        <fa-icon [icon]="fa.faUndo"></fa-icon>
+      </button>
+      <button
+        mat-raised-button
+        color="link"
+        title="rotate RIGHT"
+        (click)="rotate('right')"
+      >
+        <fa-icon [icon]="fa.faUndo" flip="horizontal"></fa-icon>
+      </button>
+    </div>
+    <button mat-raised-button color="link" (click)="report()">Report</button>
+  </mat-card-content>
 </mat-card>
