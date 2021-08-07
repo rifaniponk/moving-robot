@@ -3,15 +3,28 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
 import { TabletopComponent } from './components/tabletop/tabletop.component';
 import { LogComponent } from './components/log/log.component';
-import { ControlComponent } from './components/control/control.component';
-
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ControlPlaceComponent } from './components/control-place/control-place.component';
+import { ControlMoveComponent } from './components/control-move/control-move.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     MainComponent,
     TabletopComponent,
     LogComponent,
-    ControlComponent,
+    ControlPlaceComponent,
+    ControlMoveComponent,
   ],
-  imports: [CommonModule],
+  exports: [MainComponent],
+  imports: [
+    CommonModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatButtonModule,
+  ],
 })
 export class MovingrobotModule {}

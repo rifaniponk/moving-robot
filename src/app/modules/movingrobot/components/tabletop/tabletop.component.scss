@@ -1,0 +1,34 @@
+.tabletop {
+  display: flex;
+  flex-direction: column-reverse;
+
+  .y-axis {
+    display: flex;
+  }
+
+  .x-axis {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(190, 190, 190);
+
+    img {
+      max-width: 120px;
+      max-height: 120px;
+
+      &.direction-1 {
+        transform: rotate(90deg);
+      }
+
+      &.direction-2 {
+        transform: rotate(180deg);
+      }
+
+      &.direction-3 {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

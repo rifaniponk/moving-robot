@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Locator } from './../../models/locator';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-movingrobot',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  @Input()
+  size: number = 5;
 
-  constructor() { }
+  locator: Locator = new Locator(this.size);
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }

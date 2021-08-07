@@ -1,4 +1,9 @@
-export type Direction = 'n' | 'e' | 's' | 'w';
+export enum Direction {
+  NORTH,
+  EAST,
+  SOUTH,
+  WEST,
+}
 export class Place {
   x: number; // start from 0
   y: number; // start from 0

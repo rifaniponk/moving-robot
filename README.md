@@ -30,3 +30,7 @@ ng test --no-watch --code-coverage
 ```
 
 open `/coverage/moving-robot/index.html` to see the coverage details
+
+## Credits
+
+- robot image: [pngfind.com](https://www.pngfind.com/mpng/hbTJbR_cosmonaut-space-suit-top-down-view-character-hd/)

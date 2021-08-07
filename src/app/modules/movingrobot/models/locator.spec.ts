@@ -1,20 +1,20 @@
 import { Log } from './log';
-import { Place } from './place';
+import { Place, Direction } from './place';
 import { Locator } from './locator';
 
 describe('Locator::place Test', () => {
   it('should place the robot into the right position', () => {
     const locator = new Locator(5);
-    const success = locator.place(4, 4, 'w');
+    const success = locator.place(4, 4, Direction.WEST);
 
-    const expectedCurrentLocation = new Place(4, 4, 'w');
+    const expectedCurrentLocation = new Place(4, 4, Direction.WEST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
     expect(success).toEqual(true);
   });
 
   it('should ignore the invalid location place', () => {
     const locator = new Locator(5);
-    const success = locator.place(5, 5, 'w');
+    const success = locator.place(5, 5, Direction.WEST);
 
     expect(locator.currentLocation).toEqual(undefined);
     expect(success).toEqual(false);
@@ -31,47 +31,47 @@ describe('Locator::move Test', () => {
 
     // facing EAST & move 2x
     locator = new Locator(5);
-    locator.place(0, 0, 'e');
+    locator.place(0, 0, Direction.EAST);
     locator.move();
     locator.move();
-    let expectedCurrentLocation = new Place(2, 0, 'e');
+    let expectedCurrentLocation = new Place(2, 0, Direction.EAST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     // facing NORTH & move 5x
     locator = new Locator(5);
-    locator.place(1, 0, 'n');
+    locator.place(1, 0, Direction.NORTH);
     locator.move();
     locator.move();
     locator.move();
     locator.move();
     locator.move();
-    expectedCurrentLocation = new Place(1, 4, 'n');
+    expectedCurrentLocation = new Place(1, 4, Direction.NORTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     // facing WEST & move 1x
     locator = new Locator(5);
-    locator.place(1, 1, 'w');
+    locator.place(1, 1, Direction.WEST);
     locator.move();
-    expectedCurrentLocation = new Place(0, 1, 'w');
+    expectedCurrentLocation = new Place(0, 1, Direction.WEST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     // facing SOUTH & move 1x
     locator = new Locator(5);
-    locator.place(2, 2, 's');
+    locator.place(2, 2, Direction.SOUTH);
     locator.move();
-    expectedCurrentLocation = new Place(2, 1, 's');
+    expectedCurrentLocation = new Place(2, 1, Direction.SOUTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
   });
 
   it('should ignore the invalid location place', () => {
     // facing EAST & move 3x
     const locator = new Locator(5);
-    locator.place(2, 2, 'e');
+    locator.place(2, 2, Direction.EAST);
     const s1 = locator.move();
     const s2 = locator.move();
     const s3 = locator.move(); // invalid movement
 
-    const expectedCurrentLocation = new Place(4, 2, 'e');
+    const expectedCurrentLocation = new Place(4, 2, Direction.EAST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
     expect(s1).toEqual(true);
     expect(s2).toEqual(true);
@@ -88,21 +88,21 @@ describe('Locator::left Test', () => {
     expect(locator.logs.length).toEqual(1);
 
     locator = new Locator(5);
-    locator.place(0, 0, 'e');
+    locator.place(0, 0, Direction.EAST);
     locator.left();
-    let expectedCurrentLocation = new Place(0, 0, 'n');
+    let expectedCurrentLocation = new Place(0, 0, Direction.NORTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.left();
-    expectedCurrentLocation = new Place(0, 0, 'w');
+    expectedCurrentLocation = new Place(0, 0, Direction.WEST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.left();
-    expectedCurrentLocation = new Place(0, 0, 's');
+    expectedCurrentLocation = new Place(0, 0, Direction.SOUTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.left();
-    expectedCurrentLocation = new Place(0, 0, 'e');
+    expectedCurrentLocation = new Place(0, 0, Direction.EAST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
   });
 });
@@ -116,21 +116,21 @@ describe('Locator::right Test', () => {
     expect(locator.logs.length).toEqual(1);
 
     locator = new Locator(5);
-    locator.place(0, 0, 'e');
+    locator.place(0, 0, Direction.EAST);
     locator.right();
-    let expectedCurrentLocation = new Place(0, 0, 's');
+    let expectedCurrentLocation = new Place(0, 0, Direction.SOUTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.right();
-    expectedCurrentLocation = new Place(0, 0, 'w');
+    expectedCurrentLocation = new Place(0, 0, Direction.WEST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.right();
-    expectedCurrentLocation = new Place(0, 0, 'n');
+    expectedCurrentLocation = new Place(0, 0, Direction.NORTH);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
 
     locator.right();
-    expectedCurrentLocation = new Place(0, 0, 'e');
+    expectedCurrentLocation = new Place(0, 0, Direction.EAST);
     expect(locator.currentLocation).toEqual(expectedCurrentLocation);
   });
 });
@@ -138,7 +138,7 @@ describe('Locator::right Test', () => {
 describe('Locator::report Test', () => {
   it('should return the current location & add it into the logs', () => {
     let locator = new Locator(5);
-    locator.place(1, 2, 'w');
+    locator.place(1, 2, Direction.WEST);
     const r = locator.report();
     expect(locator.currentLocation).toEqual(r);
     expect(locator.logs.length).toEqual(2);

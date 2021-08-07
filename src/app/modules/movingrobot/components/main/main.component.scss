@@ -1,0 +1,13 @@
+.main-movingrobot {
+  & > div {
+    display: flex;
+  }
+
+  .tabletop-wrapper {
+    padding: 0px 20px;
+  }
+
+  .log-wrapper {
+    padding: 0px 20px;
+  }
+}

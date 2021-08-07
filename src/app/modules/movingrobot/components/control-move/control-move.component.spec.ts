@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ControlComponent } from './control.component';
+import { ControlMoveComponent } from './control-move.component';
 
-describe('ControlComponent', () => {
-  let component: ControlComponent;
-  let fixture: ComponentFixture<ControlComponent>;
+describe('ControlMoveComponent', () => {
+  let component: ControlMoveComponent;
+  let fixture: ComponentFixture<ControlMoveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ControlComponent ]
+      declarations: [ ControlMoveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ControlComponent);
+    fixture = TestBed.createComponent(ControlMoveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

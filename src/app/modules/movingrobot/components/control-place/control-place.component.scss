@@ -1,0 +1,14 @@
+form {
+  padding: 0px 20px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+
+  .form-control {
+    margin-right: 20px;
+
+    &.btn {
+      padding-bottom: 17.5px;
+    }
+  }
+}

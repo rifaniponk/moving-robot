@@ -31,16 +31,16 @@ export class Locator {
 
     const newLoc = this.currentLocation.clone();
     switch (this.currentLocation.f) {
-      case 'n':
+      case Direction.NORTH:
         newLoc.y++;
         break;
-      case 'e':
+      case Direction.EAST:
         newLoc.x++;
         break;
-      case 's':
+      case Direction.SOUTH:
         newLoc.y--;
         break;
-      case 'w':
+      case Direction.WEST:
         newLoc.x--;
         break;
     }
@@ -63,17 +63,17 @@ export class Locator {
 
     const newLoc = this.currentLocation.clone();
     switch (this.currentLocation.f) {
-      case 'n':
-        newLoc.f = 'w';
+      case Direction.NORTH:
+        newLoc.f = Direction.WEST;
         break;
-      case 'e':
-        newLoc.f = 'n';
+      case Direction.EAST:
+        newLoc.f = Direction.NORTH;
         break;
-      case 's':
-        newLoc.f = 'e';
+      case Direction.SOUTH:
+        newLoc.f = Direction.EAST;
         break;
-      case 'w':
-        newLoc.f = 's';
+      case Direction.WEST:
+        newLoc.f = Direction.SOUTH;
         break;
     }
 
@@ -92,17 +92,17 @@ export class Locator {
 
     const newLoc = this.currentLocation.clone();
     switch (this.currentLocation.f) {
-      case 'n':
-        newLoc.f = 'e';
+      case Direction.NORTH:
+        newLoc.f = Direction.EAST;
         break;
-      case 'e':
-        newLoc.f = 's';
+      case Direction.EAST:
+        newLoc.f = Direction.SOUTH;
         break;
-      case 's':
-        newLoc.f = 'w';
+      case Direction.SOUTH:
+        newLoc.f = Direction.WEST;
         break;
-      case 'w':
-        newLoc.f = 'n';
+      case Direction.WEST:
+        newLoc.f = Direction.NORTH;
         break;
     }
 
