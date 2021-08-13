@@ -1,5 +1,6 @@
 <div class="control-place-wrapper">
-  <app-control-place></app-control-place>
+  <app-control-place [robotId]="0"></app-control-place>
+  <app-control-place [robotId]="1"></app-control-place>
 </div>
 <div class="main-movingrobot">
   <div>
@@ -8,7 +9,8 @@
     </div>
     <div class="right-wrapper">
       <app-log [logs]="locator.logs"></app-log>
-      <app-control-move></app-control-move>
+      <app-control-move [robotId]="0"></app-control-move>
+      <app-control-move [robotId]="1"></app-control-move>
     </div>
   </div>
   <div class="control-wrapper"></div>

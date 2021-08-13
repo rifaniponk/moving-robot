@@ -22,56 +22,61 @@ export class TabletopComponent implements OnInit {
 
   constructor(private eventBus: NgEventBus) {
     this.refreshCurrentRobotPosition();
+    this.refreshCurrentRobotPosition();
   }
 
   ngOnInit(): void {
     this.locator.size = this.size;
     this.eventBus.on('movingrobot:control:place').subscribe((md: MetaData) => {
-      this.newPlace(md.data);
+      this.newPlace(0, md.data.newPlace);
     });
     this.eventBus.on('movingrobot:control:action').subscribe((md: MetaData) => {
       if (md.data === 'move') {
-        this.locator.move();
-      } else if (md.data === 'left') {
-        this.locator.left();
-      } else if (md.data === 'right') {
-        this.locator.right();
-      } else if (md.data === 'report') {
-        this.locator.report();
+        this.locator.move(md.data.robotId);
+      } else if (md.data.action === 'left') {
+        this.locator.left(md.data.robotId);
+      } else if (md.data.action === 'right') {
+        this.locator.right(md.data.robotId);
+      } else if (md.data.action === 'report') {
+        this.locator.report(md.data.robotId);
       }
       this.refreshCurrentRobotPosition();
     });
 
     this.refreshCurrentRobotPosition();
+    this.refreshCurrentRobotPosition();
   }
 
-  newPlace(np: Place): void {
-    this.locator.place(np.x, np.y, np.f);
+  newPlace(robotId: number, np: Place): void {
+    this.locator.place(robotId, np.x, np.y, np.f);
     this.refreshCurrentRobotPosition();
   }
 
   refreshCurrentRobotPosition(): void {
     // reset robot position
     this.locationTables = this.getDefaultLocationTables();
+    
 
     // update robot location
-    if (this.locator.currentLocation) {
-      for (let i = 0; i < this.size; i++) {
-        for (let j = 0; j < this.size; j++) {
-          if (
-            i === this.locator.currentLocation.y &&
-            j === this.locator.currentLocation?.x
-          ) {
-            this.locationTables[i][j] = true;
+    [0,1].forEach(robotId => {
+      if (this.locator.currentLocations[robotId]) {
+        for (let i = 0; i < this.size; i++) {
+          for (let j = 0; j < this.size; j++) {
+            if (
+              i === this.locator.currentLocations[robotId].y &&
+              j === this.locator.currentLocations[robotId].x
+            ) {
+              this.locationTables[i][j] = robotId;
+            }
           }
         }
       }
-    }
+    })
   }
 
   getDefaultLocationTables() {
     return new Array(this.size)
       .fill(false)
-      .map(() => new Array(this.size).fill(false));
+      .map(() => new Array(this.size).fill(-1));
   }
 }

@@ -2,7 +2,7 @@ import { Log, Action } from './log';
 import { Place, Direction } from './place';
 
 export class Locator {
-  currentLocation?: Place;
+  currentLocations: Place[] = [];
   logs: Log[] = [];
   size: number; // size of square tabletop
 
@@ -11,25 +11,25 @@ export class Locator {
   }
 
   // place will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
-  place(x: number, y: number, f: Direction): boolean {
+  place(robotID: number, x: number, y: number, f: Direction): boolean {
     const newLoc = new Place(x, y, f);
     if (!this.validate('place', newLoc)) {
       return false;
     }
-    this.currentLocation = newLoc;
+    this.currentLocations[robotID] = newLoc;
     this.logs.push(new Log('place', true, newLoc));
     return true;
   }
 
   // move the robot one unit forward in the direction it is currently facing
-  move(): boolean {
-    if (!this.currentLocation) {
+  move(robotID: number): boolean {
+    if (!this.currentLocations[robotID]) {
       this.logs.push(new Log('move', false, undefined));
       return false;
     }
 
-    const newLoc = this.currentLocation.clone();
-    switch (this.currentLocation.f) {
+    const newLoc = this.currentLocations[robotID].clone();
+    switch (this.currentLocations[robotID].f) {
       case Direction.NORTH:
         newLoc.y++;
         break;
@@ -48,20 +48,20 @@ export class Locator {
       return false;
     }
 
-    this.currentLocation = newLoc;
+    this.currentLocations[robotID] = newLoc;
     this.logs.push(new Log('move', true, newLoc));
     return true;
   }
 
   // will rotate the robot 90 degrees to the left
-  left(): boolean {
-    if (!this.currentLocation) {
+  left(robotID: number): boolean {
+    if (!this.currentLocations[robotID]) {
       this.logs.push(new Log('left', false, undefined));
       return false;
     }
 
-    const newLoc = this.currentLocation.clone();
-    switch (this.currentLocation.f) {
+    const newLoc = this.currentLocations[robotID].clone();
+    switch (this.currentLocations[robotID].f) {
       case Direction.NORTH:
         newLoc.f = Direction.WEST;
         break;
@@ -76,21 +76,21 @@ export class Locator {
         break;
     }
 
-    this.currentLocation = newLoc;
+    this.currentLocations[robotID] = newLoc;
     this.logs.push(new Log('left', true, newLoc));
 
     return true;
   }
 
   // will rotate the robot 90 degrees to right
-  right(): boolean {
-    if (!this.currentLocation) {
+  right(robotID: number): boolean {
+    if (!this.currentLocations[robotID]) {
       this.logs.push(new Log('right', false, undefined));
       return false;
     }
 
-    const newLoc = this.currentLocation.clone();
-    switch (this.currentLocation.f) {
+    const newLoc = this.currentLocations[robotID].clone();
+    switch (this.currentLocations[robotID].f) {
       case Direction.NORTH:
         newLoc.f = Direction.EAST;
         break;
@@ -105,16 +105,16 @@ export class Locator {
         break;
     }
 
-    this.currentLocation = newLoc;
+    this.currentLocations[robotID] = newLoc;
     this.logs.push(new Log('right', true, newLoc));
 
     return true;
   }
 
   // report will return the robot's current location and log it
-  report(): Place | undefined {
-    this.logs.push(new Log('report', true, this.currentLocation));
-    return this.currentLocation;
+  report(robotID: number): Place | undefined {
+    this.logs.push(new Log('report', true, this.currentLocations[robotID]));
+    return this.currentLocations[robotID];
   }
 
   // validate the new position and log the error movement if it's not valid

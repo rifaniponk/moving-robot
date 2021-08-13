@@ -6,8 +6,13 @@
           <!-- [{{ x }},{{ y }}] -->
           <img
             src="assets/img/robot.png"
-            *ngIf="l"
-            class="direction-{{ locator.currentLocation?.f }}"
+            *ngIf="0 === l"
+            class="direction-{{ locator.currentLocations[0]?.f }}"
+          />
+          <img
+            src="assets/img/robot.png"
+            *ngIf="1 === l"
+            class="direction-{{ locator.currentLocations[1]?.f }}"
           />
         </div>
       </div>

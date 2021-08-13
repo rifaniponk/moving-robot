@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faUndo } from '@fortawesome/free-solid-svg-icons';
 import { NgEventBus } from 'ng-event-bus';
 
@@ -8,20 +8,23 @@ import { NgEventBus } from 'ng-event-bus';
   styleUrls: ['./control-move.component.scss'],
 })
 export class ControlMoveComponent implements OnInit {
+  @Input()
+  robotId: number = 0;
+
   fa = { faUndo };
   constructor(private eventBus: NgEventBus) {}
 
   ngOnInit(): void {}
 
   move(): void {
-    this.eventBus.cast('movingrobot:control:action', 'move');
+    this.eventBus.cast('movingrobot:control:action', {action: 'move', robotId: this.robotId});
   }
 
   rotate(to: 'left' | 'right'): void {
-    this.eventBus.cast('movingrobot:control:action', to);
+    this.eventBus.cast('movingrobot:control:action', {action: to, robotId: this.robotId});
   }
 
   report(): void {
-    this.eventBus.cast('movingrobot:control:action', 'report');
+    this.eventBus.cast('movingrobot:control:action', {action: 'report', robotId: this.robotId});
   }
 }

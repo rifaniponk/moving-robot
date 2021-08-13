@@ -1,5 +1,5 @@
 import { Direction, Place } from './../../models/place';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   isControlError,
@@ -13,6 +13,9 @@ import { NgEventBus } from 'ng-event-bus';
   styleUrls: ['./control-place.component.scss'],
 })
 export class ControlPlaceComponent implements OnInit {
+  @Input()
+  robotId: number = 0;
+
   directions: { key: Direction; value: string }[] = [
     {
       key: Direction.NORTH,
@@ -59,7 +62,7 @@ export class ControlPlaceComponent implements OnInit {
     const y = Number(this.form.value.coordinate.split(',')[1]);
     const newPlace = new Place(x, y, this.form.value.direction);
 
-    this.eventBus.cast('movingrobot:control:place', newPlace);
+    this.eventBus.cast('movingrobot:control:place', {action: 'place', newPlace, robotId: this.robotId});
   }
 
   isControlError(controlName: string): boolean {
